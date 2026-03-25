@@ -1,0 +1,27 @@
+<!-- Meta tags for SEO -->
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+<meta name="description" content="Price Compario - Smart Price Comparison Platform. Compare prices from Amazon, Flipkart, Walmart and more. Find the best deals on electronics, smartphones, laptops, and accessories.">
+<meta name="keywords" content="price comparison, best deals, shopping, compare prices, Amazon, Flipkart, Walmart">
+<meta name="author" content="Price Compario">
+<meta name="robots" content="index, follow">
+
+<!-- Open Graph tags for social media -->
+<meta property="og:title" content="Price Compario - Smart Price Comparison Platform">
+<meta property="og:description" content="Find the best deals across multiple vendors. Compare prices in real-time and save money on your purchases.">
+<meta property="og:type" content="website">
+<meta property="og:url" content="{{ request.url }}">
+<meta property="og:image" content="{{ url_for('static', filename='images/og-image.png') }}">
+
+<!-- Twitter Card tags -->
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Price Compario - Smart Price Comparison Platform">
+<meta name="twitter:description" content="Find the best deals across multiple vendors. Compare prices in real-time and save money.">
+<meta name="twitter:image" content="{{ url_for('static', filename='images/twitter-image.png') }}">
+
+<!-- Canonical URL -->
+<link rel="canonical" href="{{ request.url }}">
+
+<!-- Favicon -->
+<link rel="icon" type="image/x-icon" href="{{ url_for('static', filename='favicon.ico') }}">
+<link rel="apple-touch-icon" href="{{ url_for('static', filename='apple-touch-icon.png') }}">

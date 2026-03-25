@@ -4,6 +4,10 @@ import os
 from config import Config, DevelopmentConfig, ProductionConfig
 from app.utils.logger import setup_logger
 from app.utils.errors import register_error_handlers
+from app.middleware.performance import PerformanceMiddleware
+from app.routes.analytics import analytics_bp
+from app.routes.health import health_bp
+from app.routes.sitemap import sitemap_bp
 
 
 def create_app(config_name=None):
@@ -27,12 +31,15 @@ def create_app(config_name=None):
     # Register error handlers
     register_error_handlers(app)
     
-    # Initialize services (will be imported when needed)
-    app.config['CACHE_TTL'] = app.config.get('CACHE_TIMEOUT', 300)
+    # Setup performance middleware
+    PerformanceMiddleware(app)
     
     # Register blueprints
     from app.routes.main import main_bp
     app.register_blueprint(main_bp)
+    app.register_blueprint(analytics_bp)
+    app.register_blueprint(health_bp)
+    app.register_blueprint(sitemap_bp)
     
     logger.info(f"Application started in {app.config.get('DEBUG', 'production')} mode")
     
