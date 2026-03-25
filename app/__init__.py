@@ -27,6 +27,9 @@ def create_app(config_name=None):
     # Register error handlers
     register_error_handlers(app)
     
+    # Initialize services (will be imported when needed)
+    app.config['CACHE_TTL'] = app.config.get('CACHE_TIMEOUT', 300)
+    
     # Register blueprints
     from app.routes.main import main_bp
     app.register_blueprint(main_bp)

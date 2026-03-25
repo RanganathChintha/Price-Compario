@@ -1,25 +1,53 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Price Compario - Smart Price Comparison Platform</title>
-    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
-</head>
-<body>
-    <div class="container">
-        <header>
-            <h1>🛍️ Price Compario</h1>
-            <p>Smart Price Comparison Platform</p>
-        </header>
+{% extends "base.html" %}
+
+{% block title %}Home - Price Compario{% endblock %}
+
+{% block content %}
+<div class="container">
+    <div class="hero-section">
+        <h1 class="hero-title">Find the Best Deals Across All Vendors</h1>
+        <p class="hero-subtitle">Compare prices from Amazon, Flipkart, Walmart and more in real-time</p>
         
-        <main>
-            <div class="coming-soon">
-                <h2>🚀 Coming Soon!</h2>
-                <p>Our advanced price comparison platform is under construction.</p>
-                <p>Check back soon for amazing features!</p>
+        <div class="search-container">
+            <div class="search-input-wrapper">
+                <i class="fas fa-search search-icon"></i>
+                <input type="text" 
+                       id="searchInput" 
+                       class="search-input" 
+                       placeholder="Search for products... (e.g., iPhone, Laptop, Headphones)"
+                       autocomplete="off">
+                <button id="searchBtn" class="search-btn">
+                    <i class="fas fa-arrow-right"></i> Search
+                </button>
             </div>
-        </main>
+            <div id="suggestionsContainer" class="suggestions-container" style="display: none;"></div>
+        </div>
     </div>
-</body>
-</html>
+    
+    <div id="resultsContainer">
+        <div class="welcome-message">
+            <i class="fas fa-search" style="font-size: 48px; color: var(--primary-color);"></i>
+            <h3>Start Searching</h3>
+            <p>Enter a product name above to compare prices across multiple vendors</p>
+            <div class="example-searches">
+                <small>Popular searches:</small>
+                <button class="example-btn" data-search="iPhone 15">iPhone 15</button>
+                <button class="example-btn" data-search="MacBook Pro">MacBook Pro</button>
+                <button class="example-btn" data-search="Sony Headphones">Sony Headphones</button>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}
+
+{% block extra_js %}
+<script>
+    // Example search buttons
+    document.querySelectorAll('.example-btn').forEach(btn => {
+        btn.addEventListener('click', () => {
+            document.getElementById('searchInput').value = btn.dataset.search;
+            document.getElementById('searchBtn').click();
+        });
+    });
+</script>
+{% endblock %}
