@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 # 🛍️ Price Compario
 
 Smart Price Comparison Platform
@@ -8,3 +9,4 @@ Smart Price Comparison Platform
 ```bash
 python -m venv venv
 source venv/bin/activate  # On Windows: venv\Scripts\activate
+=======
